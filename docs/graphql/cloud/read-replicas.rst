@@ -9,7 +9,7 @@ Read replicas
 
 .. contents:: Table of contents
   :backlinks: none
-  :depth: 1
+  :depth: 2
   :local:
 
 Introduction
@@ -20,14 +20,15 @@ Hasura Cloud can load balance queries and subscriptions across read replicas whi
 Adding read replica urls
 ------------------------
 
+Postgres
+^^^^^^^^
+
 .. rst-class:: api_tabs
 .. tabs::
 
    .. tab:: Console
 
-     Currently it is only possible to add read replicas for a database at the time of connecting.
-
-     Head to ``Data -> Manage -> Connect database``
+     Head to ``Data -> Manage -> <db-name> -> Edit``
 
      .. thumbnail:: /img/graphql/cloud/read-replicas/connect-db-with-replica.png
         :alt: Connect database with read replica
@@ -66,10 +67,10 @@ Adding read replica urls
 
    .. tab:: API
 
-      Currently it is only possible to add read replicas for a database at the time of connecting using the :ref:`pg_add_source metadata API <pg_add_source>`
+      You can add read replicas for a database using the :ref:`metadata_pg_add_source` metadata API
 
       .. code-block:: http
-         :emphasize-lines: 15-26
+         :emphasize-lines: 16-27
 
          POST /v1/metadata HTTP/1.1
          Content-Type: application/json
@@ -79,6 +80,7 @@ Adding read replica urls
            "type": "pg_add_source",
            "args": {
              "name": "<db_name>",
+             "replace_configuration": true,
              "configuration": {
                "connection_info": {
                  "database_url": {
