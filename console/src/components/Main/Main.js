@@ -1,10 +1,8 @@
 import React from 'react';
-
 import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
 import Tooltip from 'react-bootstrap/lib/Tooltip';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-
 import { HASURA_COLLABORATOR_TOKEN } from '../../constants';
 import globals from '../../Globals';
 import { versionGT } from '../../helpers/versionUtils';
@@ -14,9 +12,8 @@ import { getLSItem, LS_KEYS, setLSItem } from '../../utils/localStorage';
 import Onboarding from '../Common/Onboarding';
 import Spinner from '../Common/Spinner/Spinner';
 import {
-  getSchemaBaseRoute,
-  redirectToMetadataStatus,
-  getDataSourceBaseRoute,
+  getDataSourceBaseRoute, getSchemaBaseRoute,
+  redirectToMetadataStatus
 } from '../Common/utils/routesUtils';
 import { getPathRoot } from '../Common/utils/urlUtils';
 import WarningSymbol from '../Common/WarningSymbol/WarningSymbol';
@@ -27,22 +24,20 @@ import {
   fetchConsoleNotifications,
   fetchServerConfig,
   loadLatestServerVersion,
-  loadServerVersion,
+  loadServerVersion
 } from './Actions';
-import { Help, ProPopup } from './components/';
-import { UpdateVersion } from './components/UpdateVersion';
 import logo from './images/white-logo.svg';
-import LoveSection from './LoveSection';
 import styles from './Main.scss';
-import NotificationSection from './NotificationSection';
 import * as tooltips from './Tooltips';
 import {
   getLoveConsentState,
   getProClickState,
   getUserType,
   setLoveConsentState,
-  setProClickState,
+  setProClickState
 } from './utils';
+
+
 
 export const updateRequestHeaders = props => {
   const { requestHeaders, dispatch } = props;
@@ -429,7 +424,7 @@ class Main extends React.Component {
               }`}
             >
               {getAdminSecretSection()}
-              <div
+              {/* <div
                 className={`${styles.headerRightNavbarBtn} ${styles.proWrapper}`}
                 onClick={this.onProIconClick}
               >
@@ -441,14 +436,14 @@ class Main extends React.Component {
                   CLOUD
                 </span>
                 {isPopUpOpen && <ProPopup toggleOpen={this.toggleProPopup} />}
-              </div>
+              </div> */}
               <Link to="/settings">
                 <div className={styles.headerRightNavbarBtn}>
                   {getMetadataStatusIcon()}
                   {getSettingsSelectedMarker()}
                 </div>
               </Link>
-              <Help isSelected={currentActiveBlock === 'support'} />
+              {/* <Help isSelected={currentActiveBlock === 'support'} />
               <NotificationSection
                 isDropDownOpen={this.state.isDropdownOpen}
                 closeDropDown={this.closeDropDown}
@@ -464,17 +459,17 @@ class Main extends React.Component {
                     toggleLoveSection={this.toggleLoveSection}
                   />
                 </div>
-              ) : null}
+              ) : null} */}
             </div>
           </div>
           <div className={styles.main + ' container-fluid'}>
             {getMainContent()}
           </div>
-          <UpdateVersion
+          {/* <UpdateVersion
             closeUpdateBanner={this.closeUpdateBanner}
             dispatch={this.props.dispatch}
             updateNotificationVersion={this.state.updateNotificationVersion}
-          />
+          /> */}
         </div>
       </div>
     );
