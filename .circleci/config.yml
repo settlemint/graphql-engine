@@ -879,4 +879,3 @@ workflows:
           <<: *filter_only_vtags_channel_branches
           requires:
             - console_unit_tests
-            - test_console
